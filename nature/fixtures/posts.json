@@ -1,0 +1,79 @@
+[
+    {
+      "model": "nature.post",
+      "pk": 1,
+      "fields": {
+        "title": "Hiking in the Swedish Mountains",
+        "slug": "hiking-in-the-swedish-mountains",
+        "author": 1,
+        "content": "This is a great place for hiking, offering breathtaking views of the Swedish landscape.",
+        "created_on": "2024-11-13T08:00:00Z",
+        "status": 1,
+        "latitude": 61.3019,
+        "longitude": 17.0191,
+        "location": "Abisko National Park",
+        "image": "post_images/hiking_sweden.jpg",
+        "likes": [1, 2],
+        "excerpt": "A brief description of the Swedish mountains and hiking trails."
+      }
+    },
+    {
+      "model": "nature.post",
+      "pk": 2,
+      "fields": {
+        "title": "A Day in Stockholm",
+        "slug": "a-day-in-stockholm",
+        "author": 2,
+        "content": "Exploring the streets of Stockholm, from Gamla Stan to the modern waterfront.",
+        "created_on": "2024-11-12T09:30:00Z",
+        "status": 1,
+        "latitude": 59.3293,
+        "longitude": 18.0686,
+        "location": "Stockholm",
+        "image": "post_images/stockholm_day.jpg",
+        "likes": [2, 3],
+        "excerpt": "An adventurous day spent exploring the heart of Sweden's capital."
+      }
+    },
+    {
+      "model": "nature.post",
+      "pk": 3,
+      "fields": {
+        "title": "Cycling Through Gothenburg",
+        "slug": "cycling-through-gothenburg",
+        "author": 1,
+        "content": "Gothenburg offers some of the best cycling routes with scenic views of the archipelago.",
+        "created_on": "2024-11-11T10:15:00Z",
+        "status": 0,
+        "latitude": 57.7089,
+        "longitude": 11.9746,
+        "location": "Gothenburg",
+        "image": "post_images/cycling_gothenburg.jpg",
+        "likes": [1],
+        "excerpt": "Enjoying the picturesque cycling paths in Gothenburg."
+      }
+    },
+    {
+      "model": "nature.comment",
+      "pk": 1,
+      "fields": {
+        "post": 1,
+        "author": 2,
+        "content": "This looks amazing! I’ve always wanted to hike in Sweden.",
+        "created_on": "2024-11-13T09:00:00Z",
+        "updated_on": "2024-11-13T09:00:00Z"
+      }
+    },
+    {
+      "model": "nature.comment",
+      "pk": 2,
+      "fields": {
+        "post": 2,
+        "author": 3,
+        "content": "Stockholm is so beautiful, I hope to visit soon!",
+        "created_on": "2024-11-12T10:00:00Z",
+        "updated_on": "2024-11-12T10:00:00Z"
+      }
+    }
+  ]
+  
