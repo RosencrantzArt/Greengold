@@ -71,8 +71,7 @@ body {
     color: #4D774E;
 }
 
-.post-link:hover,
-.page-link {
+.post-link:hover {
     color: #6E9D77; /* Mjukare grön för hover på länkar */
 }
 
@@ -131,4 +130,80 @@ body {
 
 .red-o {
     color: #4D774E; /* Ersatt röd accent med mörkare grön */
+}
+
+/* Ny CSS för header och introduktion */
+header h1 {
+    color: #355E3B;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+header p.lead {
+    color: #6E9D77;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Filter-sektion */
+.filter-section select.form-select {
+    border: 1px solid #A4B8A9;
+    color: #4D774E;
+    background-color: #F0F8F4;
+}
+
+.filter-section .btn-secondary {
+    background-color: #6E9D77;
+    color: #fff;
+    border: none;
+}
+
+.filter-section .btn-secondary:hover {
+    background-color: #355E3B;
+}
+
+/* Sökfält */
+.search-bar input[type="text"] {
+    border: 1px solid #A4B8A9;
+    color: #4D774E;
+}
+
+.search-bar .btn-primary {
+    background-color: #6E9D77;
+    color: #fff;
+    border: none;
+}
+
+.search-bar .btn-primary:hover {
+    background-color: #355E3B;
+}
+
+/* Sidebar: Senaste och Populära inlägg */
+.sidebar h3 {
+    color: #355E3B;
+}
+
+.sidebar ul li a {
+    color: #4D774E;
+}
+
+.sidebar ul li a:hover {
+    color: #6E9D77;
+}
+
+/* Pagination */
+.pagination .page-item .page-link {
+    color: #4D774E;
+    border: 1px solid #A4B8A9;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #6E9D77;
+    color: #fff;
+    border-color: #6E9D77;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #A8D5BA;
+    color: #355E3B;
 }
