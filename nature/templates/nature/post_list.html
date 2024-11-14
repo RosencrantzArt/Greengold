@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Inläggslista</h1>
+<p>This is the post list view.</p>
+<ul>
+  {% for post in post_list %}
+    <li>
+      <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+      <p>{{ post.content|truncatewords:30 }}</p>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
