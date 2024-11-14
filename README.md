@@ -24,82 +24,100 @@ Green Blog is a Django-based blog project designed to inspire the use of Sweden'
 
 Follow these steps to get the project running locally:
 
-### 1. Clone the repository
+## Installation
 
-```bash
-git clone https://github.com/your-username/green_blog.git
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/green_blog.git
+    ```
 
-Create and activate a virtual environment
-First, create and activate a virtual environment to install the dependencies:
+2. Create and activate a virtual environment:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use 'venv\Scripts\activate'
+    ```
 
-python -m venv venv
-source venv/bin/activate  # On Windows use 'venv\Scripts\activate'
+3. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Install dependencies
+4. Configure environment variables:
+    - Create a `.env` file in the project's root directory and add your environment variables:
+    ```text
+    DEBUG=True
+    SECRET_KEY=your_secret_key
+    DATABASE_URL=postgres://user:password@localhost:5432/dbname
+    ```
 
-pip install -r requirements.txt
+5. Migrate the database:
+    ```bash
+    python manage.py migrate
+    ```
 
-Configure environment variables
-Create a .env file in the project's root directory and add your environment variables:
+6. Collect static files:
+    ```bash
+    python manage.py collectstatic
+    ```
 
-DEBUG=True
-SECRET_KEY=your_secret_key
-DATABASE_URL=postgres://user:password@localhost:5432/dbname
+7. Start the server:
+    ```bash
+    python manage.py runserver
+    ```
 
-Migrate the database
-python manage.py migrate
+    Open your browser and go to `http://localhost:8000` to view the blog.
 
-Collect static files
-python manage.py collectstatic
+## Deployment
 
-Start the server
-python manage.py runserver
-Open your browser and go to http://localhost:8000 to view the blog.
-
-Deployment
 To deploy to Heroku, follow these steps:
 
-Log in to Heroku and create a new application.
+1. Log in to Heroku and create a new application.
+2. Use the Heroku CLI to link your project to Heroku:
+    ```bash
+    heroku login
+    heroku create
+    git push heroku main
+    ```
 
-Use the Heroku CLI to link your project to Heroku:
+3. Set up the database on Heroku:
+    ```bash
+    heroku run python manage.py migrate
+    ```
 
-heroku login
-heroku create
-git push heroku main
+4. Collect static files for Heroku:
+    ```bash
+    heroku run python manage.py collectstatic
+    ```
 
-Set up the database on Heroku:
+5. Open the app in your browser:
+    ```bash
+    heroku open
+    ```
 
-heroku run python manage.py migrate
+## Functionality
 
-Collect static files for Heroku:
-heroku run python manage.py collectstatic
-
-Open the app in your browser:
-heroku open
-
-Functionality
-Homepage
+### Homepage
 The homepage displays a list of the latest blog posts, including an excerpt and images. Users can click on a post to read more and leave comments.
 
-User Accounts
+### User Accounts
 Users can register, log in, and create their own accounts. They can also delete their posts and see posts they have liked.
 
-Geotagging and Filtering
+### Geotagging and Filtering
 Users can tag their posts with a location (e.g., a city or national park), allowing posts to be filtered based on geography.
 
-Improvements and Future Features
-Ability to search for specific posts or tags.
-Improved responsiveness and optimization for mobile devices.
-Admin functionality to edit or delete posts from other users.
-Add a feature to upload profile pictures.
-License
+## Improvements and Future Features
+- Ability to search for specific posts or tags.
+- Improved responsiveness and optimization for mobile devices.
+- Admin functionality to edit or delete posts from other users.
+- Add a feature to upload profile pictures.
+
+## License
 This project is licensed under the MIT License - see LICENSE for more information.
 
-Contact
+## Contact
 For questions or feedback, please contact me via [your email address or GitHub profile].
 
-
-### Explanation of the sections:
+## Explanation of the sections:
 
 1. **Project Description**: A brief introduction to what the project is about and its functionality.
 2. **Features**: Key features that the application offers (user accounts, posts, likes, comments, geotagging, etc.).
@@ -110,5 +128,3 @@ For questions or feedback, please contact me via [your email address or GitHub p
 7. **Improvements**: Possible future improvements or features that could be added.
 8. **License**: Information about the license (MIT License).
 9. **Contact**: How to reach you for questions or feedback.
-
-
