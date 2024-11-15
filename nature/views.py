@@ -6,7 +6,7 @@ class PostList(ListView):
     model = Post
     template_name = 'nature/post_list.html'  
     context_object_name = 'post_list'  
-    paginate_by = 10  
+    paginate_by = 5  
 
     def get_queryset(self):
         return Post.objects.filter(status=1)

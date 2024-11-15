@@ -28,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-rosencrantzar-greengold-6ev06u11wm9.ws-eu116.gitpod.io','.herokuapp.com']
 
@@ -145,3 +145,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Summernote configuration
+SUMMERNOTE_CONFIG = {
+    'iframe': True,  # Detta gör att Summernote renderas i en iframe, vilket minimerar stilkonflikter
+    'summernote': {
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['insert', ['link', 'picture', 'video']],
+        ],
+        'width': '100%',  # Anpassa bredden på editorn
+        'height': '400',  # Anpassa höjden på editorn
+    },
+}

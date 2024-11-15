@@ -1,4 +1,4 @@
-/* Grundlayout */
+
 body {
     background-color: #F0F8F4;
 }
@@ -7,24 +7,24 @@ body {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #355E3B; /* Dämpad mörkgrön för logotyptext */
+    color: #355E3B; 
 }
 
-/* Knappar och länkar */
+
 .btn-signup,
 .btn-edit {
-    background-color: #6E9D77; /* Mjuk grön för knappar */
+    background-color: #6E9D77; 
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #A8D5BA; /* Ljusare grön för hover */
+    background-color: #A8D5BA; 
     color: #355E3B;
 }
 
 .link {
-    color: #4D774E; /* Mörkare grön för länkar */
+    color: #4D774E; 
     text-decoration: none;
 }
 
@@ -35,7 +35,7 @@ body {
 }
 
 .btn-like {
-    color: #6E9D77; /* Grön för like-knappen */
+    color: #6E9D77; 
     border: none;
     background: transparent;
 }
@@ -47,13 +47,13 @@ body {
     border: none;
 }
 
-/* Bakgrunder och kort */
+
 .light-bg {
-    background-color: #EAF2EF; /* Mjuk ljusgrön för bakgrund */
+    background-color: #EAF2EF; 
 }
 
 .dark-bg {
-    background-color: #355E3B; /* Dämpad mörkgrön för sektioner */
+    background-color: #355E3B; 
 }
 
 .main-bg {
@@ -62,31 +62,31 @@ body {
 
 .card {
     border: none;
-    background-color: #FFFFFF; /* Transparent kort för ren look */
+    background-color: #FFFFFF; 
 }
 
-/* Rubriker och text */
+
 .post-link {
     text-decoration: none;
     color: #4D774E;
 }
 
 .post-link:hover {
-    color: #6E9D77; /* Mjukare grön för hover på länkar */
+    color: #6E9D77; 
 }
 
 .post-title {
     margin-top: 10%;
     margin-left: 5%;
-    color: #355E3B; /* Dämpad mörkgrön för titlar */
+    color: #355E3B; 
 }
 
 .post-subtitle {
     margin-left: 5%;
-    color: #A4B8A9; /* Ljusare grön för undertitlar */
+    color: #A4B8A9; 
 }
 
-/* Masthead och bilder */
+
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -119,20 +119,20 @@ body {
     z-index: 100;
 }
 
-/* Färgjusteringar */
+
 .faded {
-    color: #A4B8A9; /* Ljusare grön för nedtonad text */
+    color: #A4B8A9; 
 }
 
 .approval {
-    color: #B3CBB9; /* Grön för godkännandetext */
+    color: #B3CBB9;
 }
 
 .red-o {
-    color: #4D774E; /* Ersatt röd accent med mörkare grön */
+    color: #4D774E; 
 }
 
-/* Ny CSS för header och introduktion */
+
 header h1 {
     color: #355E3B;
     font-size: 2.5rem;
@@ -145,7 +145,7 @@ header p.lead {
     text-align: center;
 }
 
-/* Filter-sektion */
+
 .filter-section select.form-select {
     border: 1px solid #A4B8A9;
     color: #4D774E;
@@ -162,7 +162,7 @@ header p.lead {
     background-color: #355E3B;
 }
 
-/* Sökfält */
+
 .search-bar input[type="text"] {
     border: 1px solid #A4B8A9;
     color: #4D774E;
@@ -178,7 +178,7 @@ header p.lead {
     background-color: #355E3B;
 }
 
-/* Sidebar: Senaste och Populära inlägg */
+
 .sidebar h3 {
     color: #355E3B;
 }
