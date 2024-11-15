@@ -72,43 +72,34 @@
             </div>
 
            <!-- Pagination -->
-<!-- Pagination -->
-{% if is_paginated %}
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
-        <li class="page-item">
-            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
-        </li>
-        {% endif %}
-        
-        <!-- Display page numbers (excluding the current page number) -->
-        {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-                <!-- Skip rendering for the active page in the pagination -->
-                <!-- Do not display it as a link, just as text elsewhere -->
-            {% else %}
-                <li class="page-item"><a href="?page={{ num }}" class="page-link">{{ num }}</a></li>
-            {% endif %}
-        {% endfor %}
-        
-        {% if page_obj.has_next %}
-        <li class="page-item">
-            <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
-        </li>
-        {% endif %}
-    </ul>
+           {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
+                    </li>
+                    {% endif %}
+                    
+                    <!-- Display page numbers (excluding the current page number) -->
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number != num %}
+                            <li class="page-item"><a href="?page={{ num }}" class="page-link">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
 
-    <!-- Display current page and total pages -->
-    <p class="text-center">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
-</nav>
-{% endif %}
+                <!-- Display current page and total pages -->
+                <p class="text-center">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+            </nav>
+           {% endif %}
 
-    </ul>
-</nav>
-{% endif %}
-
-            
         </div>
 
         <!-- Sidebar for Recent and Popular Posts -->

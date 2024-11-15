@@ -1,41 +1,31 @@
-
+/* General Body Styles */
 body {
     background-color: #F0F8F4;
 }
 
+/* Branding */
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #355E3B; 
+    color: #355E3B;
 }
 
-
+/* Button Styles */
 .btn-signup,
 .btn-edit {
-    background-color: #6E9D77; 
+    background-color: #6E9D77;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #A8D5BA; 
+    background-color: #A8D5BA;
     color: #355E3B;
 }
 
-.link {
-    color: #4D774E; 
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #2E5339;
-    text-decoration: underline;
-}
-
 .btn-like {
-    color: #6E9D77; 
+    color: #6E9D77;
     border: none;
     background: transparent;
 }
@@ -47,13 +37,13 @@ body {
     border: none;
 }
 
-
+/* Backgrounds */
 .light-bg {
-    background-color: #EAF2EF; 
+    background-color: #EAF2EF;
 }
 
 .dark-bg {
-    background-color: #355E3B; 
+    background-color: #355E3B;
 }
 
 .main-bg {
@@ -62,31 +52,31 @@ body {
 
 .card {
     border: none;
-    background-color: #FFFFFF; 
+    background-color: #FFFFFF;
 }
 
-
+/* Post Link Styles */
 .post-link {
     text-decoration: none;
     color: #4D774E;
 }
 
 .post-link:hover {
-    color: #6E9D77; 
+    color: #6E9D77;
 }
 
 .post-title {
     margin-top: 10%;
     margin-left: 5%;
-    color: #355E3B; 
+    color: #355E3B;
 }
 
 .post-subtitle {
     margin-left: 5%;
-    color: #A4B8A9; 
+    color: #A4B8A9;
 }
 
-
+/* Masthead Styles */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -119,9 +109,9 @@ body {
     z-index: 100;
 }
 
-
+/* Text Styles */
 .faded {
-    color: #A4B8A9; 
+    color: #A4B8A9;
 }
 
 .approval {
@@ -129,10 +119,10 @@ body {
 }
 
 .red-o {
-    color: #4D774E; 
+    color: #4D774E;
 }
 
-
+/* Header Styles */
 header h1 {
     color: #355E3B;
     font-size: 2.5rem;
@@ -145,7 +135,7 @@ header p.lead {
     text-align: center;
 }
 
-
+/* Filter Section */
 .filter-section select.form-select {
     border: 1px solid #A4B8A9;
     color: #4D774E;
@@ -162,7 +152,7 @@ header p.lead {
     background-color: #355E3B;
 }
 
-
+/* Search Bar */
 .search-bar input[type="text"] {
     border: 1px solid #A4B8A9;
     color: #4D774E;
@@ -178,7 +168,7 @@ header p.lead {
     background-color: #355E3B;
 }
 
-
+/* Sidebar */
 .sidebar h3 {
     color: #355E3B;
 }
@@ -191,7 +181,7 @@ header p.lead {
     color: #6E9D77;
 }
 
-/* Pagination */
+/* Pagination Styles */
 .pagination .page-item .page-link {
     color: #4D774E;
     border: 1px solid #A4B8A9;
@@ -206,4 +196,26 @@ header p.lead {
 .pagination .page-item .page-link:hover {
     background-color: #A8D5BA;
     color: #355E3B;
+}
+
+/* Add styles for "Page X of Y" */
+.pagination .page-info {
+    color: #355E3B;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .pagination {
+        font-size: 0.9rem;  /* Smaller font size for mobile */
+    }
+
+    .post-link {
+        font-size: 1rem;
+    }
+
+    .search-bar input[type="text"] {
+        width: 80%;  /* Make search input more mobile-friendly */
+    }
 }
