@@ -28,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-rosencrantzar-greengold-6ev06u11wm9.ws-eu116.gitpod.io','.herokuapp.com']
 
@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'django_summernote',
 
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -148,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
-    'iframe': True,  # Detta gör att Summernote renderas i en iframe, vilket minimerar stilkonflikter
+    'iframe': True,  
     'summernote': {
         'toolbar': [
             ['style', ['style']],
@@ -156,7 +159,7 @@ SUMMERNOTE_CONFIG = {
             ['para', ['ul', 'ol', 'paragraph']],
             ['insert', ['link', 'picture', 'video']],
         ],
-        'width': '100%',  # Anpassa bredden på editorn
-        'height': '400',  # Anpassa höjden på editorn
+        'width': '100%',  
+        'height': '400',  
     },
 }

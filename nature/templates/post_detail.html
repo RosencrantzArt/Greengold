@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+  <!-- Post Details -->
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.content }}</p>
+  <p>Published on {{ post.created_at|date:"F j, Y" }}</p>
+
+  <a href="{% url 'post_update' post.id %}" class="btn btn-warning">Edit</a>
+  <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+  <a href="{% url 'post_list' %}" class="btn btn-secondary">Back to posts</a>
+
+  <hr>
+
+  <!-- Comments Section -->
+  <div class="comments-section">
+    <h3>Comments:</h3>
+    {% for comment in post.comment_set.all %}
+      <div class="comment">
+        <p><strong>{{ comment.user.username }}</strong> on {{ comment.created_at|date:"F j, Y" }}</p>
+        <p>{{ comment.content }}</p>
+      </div>
+    {% empty %}
+      <p>No comments yet. Be the first to comment!</p>
+    {% endfor %}
+  </div>
+
+  <!-- Creating New Comments -->
+  <div class="col-md-4 card mb-4 mt-3">
+    <div class="card-body">
+      {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form id="commentForm" method="post" style="margin-top: 1.3em;">
+          {% csrf_token %}
+          {{ comment_form | crispy }}
+          <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+        </form>
+      {% else %}
+        <p>Log in to leave a comment</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+

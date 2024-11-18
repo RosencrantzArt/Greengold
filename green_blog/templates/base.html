@@ -3,9 +3,14 @@
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 <head>
-
-    <title>Green Blog</title>
+    <title>Nature Blog - Inspiring discoveries in nature and outdoor living</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Sign up and log in -->
+    <div class="auth-links">
+        <a href="{% url 'register' %}" class="btn btn-primary">Create account</a>
+        <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+    </div>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -19,7 +24,6 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'nature/style.css' %}">
-
 </head>
 <body class="d-flex flex-column h-100 main-bg">
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -29,6 +33,7 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -39,12 +44,23 @@
                         <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
-                <span class="navbar-text text-muted">
-                    Inspiring adventures in nature and outdoor living
-                </span>
             </div>
         </div>
     </nav>
+
+    <!-- Displaying Django messages -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message|safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -66,3 +82,4 @@
     </script>
 </body>
 </html>
+

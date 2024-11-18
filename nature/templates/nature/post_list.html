@@ -3,11 +3,13 @@
 {% block content %}
 <h1>Nature Stories & Inspirations</h1>
 <p>Join Us on Our Green Journey</p>
+
+<!-- Post List -->
 <ul>
   {% for post in post_list %}
     <li>
       <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
-      <p>{{ post.content|truncatewords:30 }}</p>
+      <p>{{ post.content|truncatewords:30|safe }}</p>
     </li>
   {% endfor %}
 </ul>
@@ -19,26 +21,26 @@
     <div>
         <!-- "Previous" link (only shown if there's a previous page) -->
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Previous</a>
         {% endif %}
 
         <!-- Page number links, show only those within a reasonable range from the current page -->
         {% for num in page_obj.paginator.page_range %}
             {% if num == page_obj.number %}
-                <!-- Current page, not a link, just bold text -->
-                <strong>{{ num }}</strong>
+                <span class="current-page">{{ num }}</span> <!-- Highlight current page -->
             {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
                 <!-- Display other page numbers as links -->
-                <a href="?page={{ num }}">{{ num }}</a>
+                <a href="?page={{ num }}" class="btn btn-outline-secondary">{{ num }}</a>
             {% endif %}
         {% endfor %}
 
         <!-- "Next" link (only shown if there's a next page) -->
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary">Next</a>
         {% endif %}
     </div>
 </div>
 
 {% endblock %}
+
 
