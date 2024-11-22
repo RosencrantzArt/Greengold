@@ -1,11 +1,16 @@
 {% load static %}
 
+{% url 'home' as home_url %}
+{% url 'about' as about_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 <head>
     <title>Nature Blog - Inspiring discoveries in nature and outdoor living</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -37,6 +42,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <!-- Logout link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -77,4 +86,3 @@
     </script>
 </body>
 </html>
-
