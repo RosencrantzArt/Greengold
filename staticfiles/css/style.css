@@ -24,6 +24,48 @@ body {
     margin-bottom: 20px;
 }
 
+/* Navbar Styles */
+#main-navbar {
+    background-color: #355E3B; /* Mörkgrön bakgrund som i footern */
+    color: white; /* Vit textfärg */
+    border-bottom: 2px solid #A4B8A9; /* En lätt grå linje under navbaren */
+}
+
+#main-navbar .navbar-brand,
+#main-navbar .nav-link {
+    color: white; /* Vit textfärg för alla länkar */
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#main-navbar .nav-link:hover {
+    color: #A8D5BA; /* Ljusare grön när man hovrar */
+}
+
+#main-navbar .navbar-toggler-icon {
+    background-color: white; /* Vit hamburgermeny */
+}
+
+/* För att hålla navbaren i linje med resten av stilen */
+#main-navbar .navbar-collapse {
+    text-align: center;
+}
+
+
+/* Active state for navbar items */
+#main-navbar .nav-link.active {
+    color: #A8D5BA !important; /* Färgen på aktiv länk */
+
+    #main-navbar {
+        background-color: #355E3B; /* Mörkgrön bakgrund */
+        color: white;
+        padding: 10px 0; /* Ökar vertikal padding för mer utrymme */
+    }
+    
+
+
 /* Button Styles */
 .btn {
     background-color: #6E9D77; /* Primary Green */
@@ -298,3 +340,4 @@ header p.lead {
     }
 }
 
+}
