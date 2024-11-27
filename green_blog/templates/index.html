@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-{% load static %}  
+{% load static %}
 {% block content %}
 
 <div class="container-fluid">
     <header class="my-4 text-center">
-        <h1>Welcome to Our Blog</h1>
+        <h1>Welcome to Our Blog!</h1>
+        <p class="lead">"Discover the latest insights, stories, and updates from our team"</p>
         {% if user.is_authenticated %}
             <p>Welcome back, {{ user.username }}!</p>
-            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+
         {% else %}
-            <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-            <a href="{% url 'register' %}" class="btn btn-success">Create account</a>
+            <!-- Inloggning och konto-skapande knappar tas bort här, de flyttas till basmall -->
         {% endif %}
-        <p class="lead">Discover the latest insights, stories, and updates from our team.</p>
         <hr>
     </header>
 
