@@ -7,10 +7,14 @@ from django.urls import path, include
 
 urlpatterns = [
     path("accounts/", include("allauth.urls")),
-    path('', views.PostList.as_view(), name='home'), 
+    path('', views.PostList.as_view(), name='home'),  # Startsida
+    path('posts/', views.PostList.as_view(), name='post_list'),  # Lägg till detta
     path('post/<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
+    path('post/create/', views.PostCreateView.as_view(), name='post_create'),
+    path('post/<slug:slug>/update/', views.PostUpdateView.as_view(), name='post_update'),
+    path('post/<slug:slug>/delete/', views.PostDeleteView.as_view(), name='post_delete'),
     path('login/', auth_views.LoginView.as_view(template_name='nature/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),  # next_page='home' för omdirigering
+    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
     path('register/', views.register, name='register'),
     path('about/', views.about, name='about'),
     

@@ -6,7 +6,7 @@
 <div class="container">
   <!-- Post Details -->
   <h1>{{ post.title }}</h1>
-  <p>{{ post.content }}</p>
+  <p>{{ post.content|safe }}</p>
   <p>Published on {{ post.created_at|date:"F j, Y" }}</p>
 
   <a href="{% url 'post_update' post.id %}" class="btn btn-warning">Edit</a>
