@@ -34,10 +34,10 @@
       {% if user.is_authenticated %}
         <h3>Leave a comment:</h3>
         <p>Posting as: {{ user.username }}</p>
-        <form id="commentForm" method="post" style="margin-top: 1.3em;">
+        <form method="post" action="{% url 'add_comment' post.slug %}">
           {% csrf_token %}
           {{ comment_form | crispy }}
-          <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+          <button type="submit" class="btn btn-signup btn-lg">Submit</button>
         </form>
       {% else %}
         <p>Log in to leave a comment</p>
