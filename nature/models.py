@@ -13,7 +13,7 @@ class Post(models.Model):
     )
     featured_image = CloudinaryField('image', blank=True, null=True)  
     content = models.TextField(default="")
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)

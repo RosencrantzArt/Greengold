@@ -26,7 +26,7 @@ class PostList(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        return Post.objects.filter(status=1).order_by('-created_on')
+        return Post.objects.filter(status=1).order_by('-created_at')
 
 
 class PostDetailView(DetailView):

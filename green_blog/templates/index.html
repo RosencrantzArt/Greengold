@@ -4,13 +4,11 @@
 
 <div class="container-fluid">
     <header class="my-4 text-center">
-        <h1>Welcome to Our Blog!</h1>
+        <h1>Welcome to our Blog!</h1>
         <p class="lead">"Discover the latest insights, stories, and updates from our team"</p>
         {% if user.is_authenticated %}
             <p>Welcome back, {{ user.username }}!</p>
-
         {% else %}
-            <!-- Inloggning och konto-skapande knappar tas bort här, de flyttas till basmall -->
         {% endif %}
         <hr>
     </header>
@@ -30,7 +28,6 @@
                     <p class="card-text">{{ post.excerpt|truncatewords:20 }}</p>
                     <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
                     
-                    <!-- Gilla och kommentera, endast om inloggad -->
                     {% if user.is_authenticated %}
                         <button class="btn btn-success mt-2">Like</button>
                         <button class="btn btn-info mt-2">Comment</button>
