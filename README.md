@@ -5,11 +5,9 @@ Green Blog is a Django-based blog project designed to inspire the use of Sweden'
 ## Features
 
 - **User Accounts**: Create and delete user accounts.
-- **Posts**: Add text and image posts with the ability to delete your own posts.
 - **Likes**: Like posts with a green leaf emoji.
 - **Comments**: Leave comments on posts.
-- **Geotagging**: Tag posts with a location.
-- **Location-Based Filtering**: Filter posts by city or region.
+
 
 ## Technologies
 
@@ -34,7 +32,7 @@ Follow these steps to get the project running locally:
 2. Create and activate a virtual environment:
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows use 'venv\Scripts\activate'
+    source venv/bin/activate  
     ```
 
 3. Install dependencies:
@@ -153,14 +151,50 @@ Users can register, log in, and create their own accounts. They can also delete 
 ### Geotagging and Filtering
 Users can tag their posts with a location (e.g., a city or national park), allowing posts to be filtered based on geography.
 
+
+
 ## Improvements and Future Features
-- Ability to search for specific posts or tags.
-- Improved responsiveness and optimization for mobile devices.
-- Admin functionality to edit or delete posts from other users.
-- Add a feature to upload profile pictures.
+
+
+## Design Overview
+
+
+### Colors
+The project's design uses a calming, nature-inspired color palette to reflect its connection to Sweden's *allemansrätt* (right of public access). Below are the selected colors and their purposes:
+
+| **Color Code** | **Usage**                     | **Description**                                |
+|-----------------|-------------------------------|------------------------------------------------|
+| `#F0F8F4`      | Background, main sections     | A calm, light green tone symbolizing nature and freshness. |
+| `#355E3B`      | Primary color, navbar, text, buttons | A deep green tone providing stability and an earthy feel. |
+| `#A4B8A9`      | Accent color, borders, text   | A soft gray-green used for subtle details.    |
+| `#A8D5BA`      | Hover effects, accents        | A light green tone highlighting interactive elements. |
+| `#6E9D77`      | Secondary color, buttons      | A balanced mid-green that complements the darker primary green. |
+| `#4D774E`      | Text, links                   | A natural green tone emphasizing key elements. |
+| `#B3CBB9`      | Subtle details                | A pastel green softening the overall design.  |
+| `#FFFFFF`      | Card backgrounds, text        | Neutral white balancing the green tones.      |
+
+
+### Colors
+![From Colors](https://res.cloudinary.com/dlt0ybmve/image/upload/v1732793899/Screenshot_2024-11-28_at_10.00.59_k8jopf.png)
+
+
+
+![From Colors](https://res.cloudinary.com/dlt0ybmve/image/upload/v1732793928/Screenshot_2024-11-28_at_10.01.55_bafnze.png)
+
+
+### Typography
+The font used throughout the project is:
+
+- **'Lato', sans-serif**: A modern, clean, and highly legible font that ensures a professional and user-friendly experience.
+
+### Design Rationale
+The design focuses on a harmonious balance of colors and typography to create an inspiring and user-friendly environment. The green-dominant palette reflects nature and aligns with the blog's focus on sustainability and exploration of Sweden's natural landscapes.  
+Interactive elements are highlighted with accent colors, while the 'Lato' font ensures readability and complements the modern aesthetic of the blog.
+
+
 
 ## License
-This project is licensed under the MIT License - see LICENSE for more information.
+
 
 ## Contact
 For questions or feedback, please contact me via [your email address or GitHub profile].
