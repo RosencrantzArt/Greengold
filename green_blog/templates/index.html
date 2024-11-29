@@ -29,11 +29,12 @@
                     <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
                     
                     {% if user.is_authenticated %}
-                        <button class="btn btn-success mt-2">Like</button>
-                        <button class="btn btn-info mt-2">Comment</button>
-                    {% else %}
-                        <p class="mt-2 text-muted">You must be logged in to like or comment on posts.</p>
-                    {% endif %}
+                    <button class="btn-like mt-2">Like</button>
+                    <button class="btn-comment mt-2">Comment</button>
+                {% else %}
+                    <p class="mt-2 text-muted">You must be logged in to like or comment on posts.</p>
+                {% endif %}
+                
                 </div>
             </div>
         </div>

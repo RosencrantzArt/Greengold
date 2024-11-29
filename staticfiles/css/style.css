@@ -24,73 +24,92 @@ body {
     margin-bottom: 20px;
 }
 
-/* Navbar Styles */
-#main-navbar {
-    background-color: #355E3B; /* Mörkgrön bakgrund som i footern */
-    color: white; /* Vit textfärg */
-    border-bottom: 2px solid #A4B8A9; /* En lätt grå linje under navbaren */
-}
-
-#main-navbar .navbar-brand,
-#main-navbar .nav-link {
-    color: white; /* Vit textfärg för alla länkar */
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-#main-navbar .nav-link:hover {
-    color: #A8D5BA; /* Ljusare grön när man hovrar */
-}
-
-#main-navbar .navbar-toggler-icon {
-    background-color: white; /* Vit hamburgermeny */
-}
-
-/* För att hålla navbaren i linje med resten av stilen */
-#main-navbar .navbar-collapse {
-    text-align: center;
-}
-
-
-/* Active state for navbar items */
-#main-navbar .nav-link.active {
-    color: #A8D5BA !important; /* Färgen på aktiv länk */
-
-    #main-navbar {
-        background-color: #355E3B; /* Mörkgrön bakgrund */
-        color: white;
-        padding: 10px 0; /* Ökar vertikal padding för mer utrymme */
-    }
-    
-
-
-/* Button Styles */
-.btn {
-    background-color: #6E9D77; /* Primary Green */
-    color: #fff;
-    border: none;
+/* Navbar Styles Matching Footer */
+.navbar {
+    background-color: #355E3B; /* Matchar footerns bakgrundsfärg */
+    color: #fff; /* Vit text */
     padding: 10px 20px;
-    border-radius: 30px; /* Rounded corners for a modern look */
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
+}
+
+.navbar a {
+    color: #fff; /* Länkar i navbaren */
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.navbar a:hover {
+    color: #A8D5BA; /* Ljusare grön på hover */
+}
+
+/* Like and Comment Button Styles */
+.btn-like {
+    color: #6E9D77;
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #A8D5BA; /* Lighter green on hover */
+.btn-like::before {
+    content: "\1F342"; /* Unicode för löv */
+    margin-right: 5px;
+    font-size: 1rem;
+}
+
+.btn-like:hover {
     color: #355E3B;
 }
 
-.btn:active {
-    background-color: #355E3B; /* Darker green when active */
-    color: #fff;
-    transform: scale(0.98); /* Button shrink effect */
+/* Kommentar-knapp */
+.btn-comment {
+    color: #6E9D77;
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Specific Button Variations (Optional) */
+.btn-comment::before {
+    content: "\1F4AC"; /* Unicode för pratbubbla */
+    margin-right: 5px;
+    font-size: 1rem;
+}
+
+.btn-comment:hover {
+    color: #355E3B;
+}
+
+
+/* Header Styles */
+header {
+    background-color: #F0F8F4; /* Ljus bakgrundsfärg */
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    color: #355E3B;
+    font-size: 3rem;
+    padding: 20px;
+}
+
+header p.lead {
+    color: #6E9D77;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+/* Button Styles */
 .btn-primary,
 .btn-secondary {
     background-color: #6E9D77; /* Primary Green */
@@ -108,21 +127,6 @@ body {
     color: #fff;
     transform: scale(0.98);
 }
-
-/* Additional style for 'like' buttons (transparent background) */
-.btn-like {
-    color: #6E9D77;
-    background: transparent;
-    border: none;
-    font-size: 1.1rem;
-}
-
-.btn-like:hover,
-.btn-like:active {
-    color: #355E3B;
-}
-
-
 
 /* Backgrounds */
 .light-bg {
@@ -194,38 +198,6 @@ body {
     background: #355E3B;
     transform: skew(15deg);
     z-index: 100;
-}
-
-/* Text Styles */
-.faded {
-    color: #A4B8A9;
-}
-
-.approval {
-    color: #B3CBB9;
-}
-
-.red-o {
-    color: #4D774E;
-}
-
-/* Header Styles */
-header h1 {
-    color: #355E3B;
-    font-size: 3rem;
-    text-align: center;
-    padding: 20px;
-}
-
-header p.lead {
-    color: #6E9D77;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.container-fluid header {
-    text-align: center;
 }
 
 /* Filter Section */
@@ -340,4 +312,3 @@ header p.lead {
     }
 }
 
-}
