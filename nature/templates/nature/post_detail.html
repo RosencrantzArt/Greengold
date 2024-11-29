@@ -9,8 +9,9 @@
   <p>{{ post.content|safe }}</p>
   <p>Published on {{ post.created_at|date:"F j, Y" }}</p>
 
-  <a href="{% url 'post_update' post.id %}" class="btn btn-warning">Edit</a>
-  <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+  <!-- Edit, Delete, and Back Buttons -->
+  <a href="{% url 'post_update' post.slug %}" class="btn btn-warning">Edit</a>
+  <a href="{% url 'post_delete' post.slug %}" class="btn btn-danger">Delete</a>
   <a href="{% url 'post_list' %}" class="btn btn-secondary">Back to posts</a>
 
   <hr>
@@ -18,10 +19,15 @@
   <!-- Comments Section -->
   <div class="comments-section">
     <h3>Comments:</h3>
-    {% for comment in post.comment_set.all %}
+    {% for comment in post.comments.all %}
       <div class="comment">
-        <p><strong>{{ comment.user.username }}</strong> on {{ comment.created_at|date:"F j, Y" }}</p>
+        <p><strong>{{ comment.author.username }}</strong> on {{ comment.created_on|date:"F j, Y" }}</p>
         <p>{{ comment.content }}</p>
+
+        <!-- Delete button for the comment, only visible if the user is the author of the comment -->
+        {% if comment.author == user %}
+          <a href="{% url 'delete_comment' post.slug comment.id %}" class="btn btn-danger btn-sm">Delete</a>
+        {% endif %}
       </div>
     {% empty %}
       <p>No comments yet. Be the first to comment!</p>
@@ -37,7 +43,7 @@
         <form method="post" action="{% url 'add_comment' post.slug %}">
           {% csrf_token %}
           {{ comment_form | crispy }}
-          <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+          <button type="submit" class="btn btn-signup btn-lg">Comment</button>
         </form>
       {% else %}
         <p>Log in to leave a comment</p>

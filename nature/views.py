@@ -1,21 +1,23 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator  # För att använda decorators på klassmetoder
-from django.contrib.auth.decorators import user_passes_test  # Lägg till denna import
+from django.utils.decorators import method_decorator  # To use decorators on class-based views
+from django.contrib.auth.decorators import user_passes_test  # To restrict access to admin views
 from .models import Post, Comment
 from django import forms
+from django.contrib.auth.signals import user_logged_out
+from django.dispatch import receiver
 
-# Definiera admin_only funktionen före användning
+# Define admin_only function to restrict access to admin users
 def admin_only(user):
     return user.is_superuser
 
-# Kommentarformulär (definieras här eftersom du inte använder forms.py)
+# Comment form (defined here as you're not using forms.py)
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -24,7 +26,7 @@ class CommentForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'placeholder': 'Write your comment here...'}),
         }
 
-# Funktion för att lägga till kommentarer
+# Function to add a comment
 @login_required
 def add_comment(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
@@ -32,35 +34,57 @@ def add_comment(request, post_slug):
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
         
-        # Kontrollera om formuläret är giltigt
+        # Check if the form is valid
         if comment_form.is_valid():
-            # Skapa och spara kommentaren, koppla den till användaren och posten
+            # Create and save the comment, linking it to the user and the post
             comment = comment_form.save(commit=False)
             comment.post = post
-            comment.user = request.user  # Koppla kommentaren till den inloggade användaren
+            comment.author = request.user  # Link the comment to the logged-in user
             comment.save()
 
-            # Feedback till användaren
+            # Feedback to the user
             messages.success(request, "Your comment has been posted successfully!")
 
-            # Omdirigera tillbaka till postens detaljsida efter att kommentaren skapats
+            # Redirect back to the post detail page after the comment is created
             return redirect('post_detail', slug=post_slug)
 
         else:
-            # Om kommentaren inte är giltig, skicka meddelande om att kommentaren inte kan postas
+            # If the comment is invalid, send an error message
             messages.error(request, "Comment cannot be empty. Please write something.")
 
     else:
-        # Om det inte är en POST-förfrågan, skapa ett tomt formulär
+        # If it's not a POST request, create an empty form
         comment_form = CommentForm()
 
-    # Rendera detaljsidan med kommentarformuläret
+    # Render the post detail page with the comment form
     return render(request, 'nature/post_detail.html', {
         'post': post,
         'comment_form': comment_form,
     })
 
-# Funktion för att gilla ett inlägg
+# Function to delete a comment
+@login_required
+def delete_comment(request, post_slug, comment_id):
+    # Get the specific post by slug
+    post = get_object_or_404(Post, slug=post_slug)
+    
+    # Get the comment by ID and ensure it belongs to the post
+    comment = get_object_or_404(Comment, id=comment_id, post=post)
+    
+    # Ensure that the logged-in user is the author of the comment
+    if comment.author != request.user:
+        raise Http404("You are not allowed to delete this comment.")
+
+    # Delete the comment
+    comment.delete()
+
+    # Provide feedback to the user
+    messages.success(request, "Your comment has been deleted.")
+
+    # Redirect back to the post detail page
+    return redirect('post_detail', slug=post_slug)
+
+# Function to like a post
 @login_required
 def like_post(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
@@ -72,7 +96,7 @@ def like_post(request, post_slug):
 
     return JsonResponse({'likes': post.total_likes()})
 
-# Lista alla inlägg
+# List all posts
 class PostList(ListView):
     model = Post
     template_name = 'index.html'
@@ -82,7 +106,7 @@ class PostList(ListView):
     def get_queryset(self):
         return Post.objects.filter(status=1).order_by('-created_at')
 
-# Visa ett specifikt inlägg
+# Show a specific post
 class PostDetailView(DetailView):
     model = Post
     template_name = 'nature/post_detail.html'
@@ -93,7 +117,7 @@ class PostDetailView(DetailView):
         context['object'] = self.get_object()
         return context
 
-# Skapa nytt inlägg (Endast admin)
+# Create a new post (Admin only)
 @method_decorator([login_required, user_passes_test(admin_only)], name='dispatch')
 class PostCreateView(CreateView):
     model = Post
@@ -101,7 +125,7 @@ class PostCreateView(CreateView):
     fields = ['title', 'content', 'status', 'slug']
     success_url = reverse_lazy('home') 
 
-# Uppdatera ett inlägg (Endast admin)
+# Update a post (Admin only)
 @method_decorator([login_required, user_passes_test(admin_only)], name='dispatch')
 class PostUpdateView(UpdateView):
     model = Post
@@ -109,14 +133,14 @@ class PostUpdateView(UpdateView):
     fields = ['title', 'content', 'status', 'slug']
     success_url = reverse_lazy('home')
 
-# Ta bort ett inlägg (Endast admin)
+# Delete a post (Admin only)
 @method_decorator([login_required, user_passes_test(admin_only)], name='dispatch')
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'nature/post_confirm_delete.html'
     success_url = reverse_lazy('home')
 
-# Användarfunktioner
+# User registration function
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -131,6 +155,16 @@ def register(request):
 
     return render(request, 'nature/register.html', {'form': form})
 
-# Om-sida
+# About page function
 def about(request):
     return render(request, 'about.html')
+
+# Custom logout message (clearing old messages and adding a new one)
+@receiver(user_logged_out)
+def custom_logout_message(sender, request, **kwargs):
+    # Clear all previous messages before adding a new one
+    messages.get_messages(request).used = True
+    
+    if request.user.is_authenticated:  # Ensure the user is logged in before adding the message
+        # Add a custom logout message
+        messages.success(request, f"Thank you {request.user.username}, hope to see you again!")

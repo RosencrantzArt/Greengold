@@ -15,6 +15,8 @@ urlpatterns = [
     path('post/<slug:post_slug>/like/', views.like_post, name='like_post'),
     path('post/<slug:slug>/update/', views.PostUpdateView.as_view(), name='post_update'),
     path('post/<slug:slug>/delete/', views.PostDeleteView.as_view(), name='post_delete'),
+    path('post/<slug:post_slug>/comment/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),
+
     path('login/', auth_views.LoginView.as_view(template_name='nature/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
     path('register/', views.register, name='register'),
