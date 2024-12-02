@@ -20,13 +20,13 @@ body {
     font-family: Lato, sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #355E3B;
+    color: #fff; /* Ändrad för att matcha navbarens textfärg */
     margin-bottom: 20px;
 }
 
 /* Navbar Styles Matching Footer */
 .navbar {
-    background-color: #355E3B; /* Matchar footerns bakgrundsfärg */
+    background-color: #355E3B; /* Mörkgrön bakgrund */
     color: #fff; /* Vit text */
     padding: 10px 20px;
 }
@@ -35,10 +35,32 @@ body {
     color: #fff; /* Länkar i navbaren */
     text-decoration: none;
     padding: 10px 15px;
+    transition: color 0.3s ease;
 }
 
 .navbar a:hover {
     color: #A8D5BA; /* Ljusare grön på hover */
+}
+
+.navbar-brand {
+    color: #fff; /* Vit text för märket */
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #A8D5BA; /* Ljusare grön på hover */
+}
+
+/* Navbar-toggler */
+.navbar-toggler {
+    border-color: white; /* Vit kant runt toggler */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    /* Gör toggler-ikonen vit */
 }
 
 /* Like and Comment Button Styles */
@@ -88,7 +110,6 @@ body {
 .btn-comment:hover {
     color: #355E3B;
 }
-
 
 /* Header Styles */
 header {

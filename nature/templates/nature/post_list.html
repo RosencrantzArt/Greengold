@@ -5,6 +5,26 @@
 {% block content %}
     <div class="container">
         <h1>Nature experience</h1>
+
+        <div class="post">
+            <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+            <p>{{ post.content|truncatewords:20 }}</p>
+            
+            <!-- Like button-->
+            <form method="post" action="{% url 'like_post' post.slug %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">
+                    {{ user in post.likes.all|yesno:"Unlike,Like" }} ({{ post.total_likes }})
+                </button>
+            </form>
+        
+            <!-- Comment link -->
+            <p><a href="{% url 'post_detail' post.slug %}">Comment</a></p>
+            
+            <!-- Read more -->
+            <p><a href="{% url 'post_detail' post.slug %}">Read more</a></p>
+        </div>
+        
         
         <!-- Loop through the posts and display them -->
         {% for post in post_list %}

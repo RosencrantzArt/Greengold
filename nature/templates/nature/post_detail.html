@@ -9,10 +9,12 @@
   <p>{{ post.content|safe }}</p>
   <p>Published on {{ post.created_at|date:"F j, Y" }}</p>
 
-  <!-- Edit, Delete, and Back Buttons -->
-  <a href="{% url 'post_update' post.slug %}" class="btn btn-warning">Edit</a>
-  <a href="{% url 'post_delete' post.slug %}" class="btn btn-danger">Delete</a>
-  <a href="{% url 'post_list' %}" class="btn btn-secondary">Back to posts</a>
+
+{% if post.author == user or user.is_superuser %}
+<a href="{% url 'post_update' post.slug %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'post_delete' post.slug %}" class="btn btn-danger">Delete</a>
+{% endif %}
+<a href="{% url 'post_list' %}" class="btn btn-secondary">Back to posts</a>
 
   <hr>
 
@@ -33,6 +35,7 @@
       <p>No comments yet. Be the first to comment!</p>
     {% endfor %}
   </div>
+
 
   <!-- Creating New Comments -->
   <div class="col-md-4 card mb-4 mt-3">

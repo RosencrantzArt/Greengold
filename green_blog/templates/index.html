@@ -8,7 +8,6 @@
         <p class="lead">"Discover the latest insights, stories, and updates from our team"</p>
         {% if user.is_authenticated %}
             <p>Welcome back, {{ user.username }}!</p>
-        {% else %}
         {% endif %}
         <hr>
     </header>
@@ -18,11 +17,16 @@
         {% for post in post_list %}
         <div class="col-md-4">
             <div class="card mb-4">
-                {% if post.featured_image %}
-                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
-                {% else %}
-                    <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="Default Image">
-                {% endif %}
+                <div class="image-container">
+                    {% if post.featured_image and "placeholder" in post.featured_image.url %}
+                        <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
+                    {% elif post.featured_image %}
+                        <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                    {% else %}
+                        <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="Default Image">
+                    {% endif %}
+                    <div class="image-flash"></div>
+                </div>
                 <div class="card-body">
                     <h5 class="card-title"><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h5>
                     <p class="card-text">{{ post.excerpt|truncatewords:20 }}</p>
@@ -31,10 +35,10 @@
                     {% if user.is_authenticated %}
                     <button class="btn-like mt-2">Like</button>
                     <button class="btn-comment mt-2">Comment</button>
-                {% else %}
+                    {% else %}
                     <p class="mt-2 text-muted">You must be logged in to like or comment on posts.</p>
-                {% endif %}
-                
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>
