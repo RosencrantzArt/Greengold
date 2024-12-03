@@ -5,8 +5,9 @@ Green Blog is a Django-based blog project designed to inspire the use of Sweden'
 ## Features
 
 - **User Accounts**: Create and delete user accounts.
-- **Likes**: Like posts with a green leaf emoji.
+
 - **Comments**: Leave comments on posts.
+
 
 
 ## Technologies
@@ -22,7 +23,7 @@ Green Blog is a Django-based blog project designed to inspire the use of Sweden'
 
 Follow these steps to get the project running locally:
 
-## Installation
+
 
 1. Clone the repository:
     ```bash
@@ -67,10 +68,10 @@ Follow these steps to get the project running locally:
 
 ## Deployment
 
-[&lt; Back to README file](/README.md)
+[< Back to README file](/README.md)
 
 1. Clone the repository:
-    -   Open a folder on your computer using the **Command Prompt** on Windows, **Terminal** on Mac or the respective on your device.
+    -   Open a folder on your computer using the **Command Prompt** on Windows, **Terminal** on Mac, or the respective on your device.
     -   Run the following command:
         -   `git clone https://github.com/MY OWN PROJEKT`
 ---
@@ -133,12 +134,12 @@ Follow these steps to get the project running locally:
 ![Awaiting deployment of project](/static/test_images/dp_8.png)
 
 ---
-17. Once complete, click **View** to open the program in thw web browser.
+17. Once complete, click **View** to open the program in the web browser.
 ![Deploy the project](/static/test_images/dp_9.png)
 
-**Your project should now render in the browser! 
+**Your project should now render in the browser!**
 
-[&lt; Back to README file](/README.md)
+[< Back to README file](/README.md)
 
 ## Functionality
 
@@ -151,13 +152,60 @@ Users can register, log in, and create their own accounts. They can also delete 
 ### Geotagging and Filtering
 Users can tag their posts with a location (e.g., a city or national park), allowing posts to be filtered based on geography.
 
+## Database Schema
 
+The database schema for Green Blog consists of three main entities: Users, Posts, and Comments. Below is a detailed breakdown of the schema:
+
+### Tables:
+
+#### 1. User
+| Column      | Type         | Description                |
+|-------------|--------------|----------------------------|
+| id          | int (PK)     | Unique ID for the user.    |
+| name        | varchar      | The user's name.           |
+| email       | varchar      | The user's email address.  |
+| password    | varchar      | The user's password.       |
+
+#### 2. Post
+| Column      | Type         | Description                     |
+|-------------|--------------|---------------------------------|
+| id          | int (PK)     | Unique ID for the post.         |
+| title       | varchar      | Title of the post.              |
+| text        | text         | Content of the post.            |
+| image_url   | varchar      | URL for the associated image.   |
+| geotag      | varchar      | Geographical tag for the post.  |
+| created_at  | datetime     | Timestamp of when the post was created. |
+| user_id     | int (FK)     | Foreign key linking to the user's ID. |
+
+#### 3. Comment
+| Column      | Type         | Description                     |
+|-------------|--------------|---------------------------------|
+| id          | int (PK)     | Unique ID for the comment.      |
+| text        | text         | Content of the comment.         |
+| created_at  | datetime     | Timestamp of when the comment was created. |
+| user_id     | int (FK)     | Foreign key linking to the user's ID. |
+| post_id     | int (FK)     | Foreign key linking to the post's ID. |
+
+### Relationships:
+- **Admin**: 
+  - A admin can create multiple posts and multiple comments.
+- **Post**:
+  - A post belongs to one user and can have multiple comments.
+- **Comment**:
+  - A comment belongs to one user and is linked to a specific post.
+
+### Example of Relationships:
+- **Admin (1) -> Post (Many):** A admin can have many posts.
+- **Post (1) -> Comment (Many):** A post can have many comments.
+- **User (1) -> Comment (Many):** A user can have many comments.
 
 ## Improvements and Future Features
 
+- Add the ability for a user to edit posts and comments.
+- Integrate a search feature to filter posts by keywords.
+- Implement user profile pages where users can view all their posts and interactions.
 
 ## Design Overview
-
 
 ### Colors
 The project's design uses a calming, nature-inspired color palette to reflect its connection to Sweden's *allemansrätt* (right of public access). Below are the selected colors and their purposes:
@@ -195,18 +243,9 @@ Interactive elements are highlighted with accent colors, while the 'Lato' font e
 
 ## License
 
+MIT License
+
 
 ## Contact
 For questions or feedback, please contact me via [your email address or GitHub profile].
 
-## Explanation of the sections:
-
-1. **Project Description**: A brief introduction to what the project is about and its functionality.
-2. **Features**: Key features that the application offers (user accounts, posts, likes, comments, geotagging, etc.).
-3. **Technologies**: The technologies used in the project (Django, PostgreSQL, Bootstrap, Heroku, etc.).
-4. **Installation**: Step-by-step instructions for installing and running the project locally.
-5. **Deployment**: How to deploy the project to Heroku.
-6. **Functionality**: A summary of the key functionalities of the app, like homepage, user accounts, and geotagging.
-7. **Improvements**: Possible future improvements or features that could be added.
-8. **License**: Information about the license (MIT License).
-9. **Contact**: How to reach you for questions or feedback.
