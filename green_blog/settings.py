@@ -86,7 +86,7 @@ ROOT_URLCONF = 'green_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'green_blog', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'nature', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

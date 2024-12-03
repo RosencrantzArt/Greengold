@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>{% block title %}Login{% endblock %}</title>
     <!-- Add Bootstrap CSS if you want styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -25,17 +25,41 @@
             {% csrf_token %}
             <div class="form-group">
                 <label for="id_username">Username:</label>
-                {{ form.username }}
+                {{ form.username|crispy }}
             </div>
-
+        
             <div class="form-group">
                 <label for="id_password">Password:</label>
-                {{ form.password }}
+                {{ form.password|crispy }}
             </div>
-
+        
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
 
+        <div class="form-group">
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <ul class="text-danger">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_password">Password:</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <ul class="text-danger">
+                    {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
         <!-- Links for password reset and registration -->
         <p class="mt-3">Forgot password? <a href="{% url 'password_reset' %}">Password reset</a>.</p>
         <p>Don't you have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
