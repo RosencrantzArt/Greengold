@@ -86,7 +86,7 @@ ROOT_URLCONF = 'green_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'nature', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Pekar direkt på huvudmappen för templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,6 +98,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 
 WSGI_APPLICATION = 'green_blog.wsgi.application'
