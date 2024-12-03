@@ -20,37 +20,37 @@ body {
     font-family: Lato, sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #fff; /* Ändrad för att matcha navbarens textfärg */
+    color: #fff; 
     margin-bottom: 20px;
 }
 
 /* Navbar Styles Matching Footer */
 .navbar {
-    background-color: #355E3B; /* Mörkgrön bakgrund */
-    color: #fff; /* Vit text */
+    background-color: #355E3B; 
+    color: #fff; 
     padding: 10px 20px;
 }
 
 .navbar a {
-    color: #fff; /* Länkar i navbaren */
+    color: #fff; 
     text-decoration: none;
     padding: 10px 15px;
     transition: color 0.3s ease;
 }
 
 .navbar a:hover {
-    color: #A8D5BA; /* Ljusare grön på hover */
+    color: #A8D5BA; 
 }
 
 .navbar-brand {
-    color: #fff; /* Vit text för märket */
+    color: #fff; 
     font-size: 1.5rem;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
-    color: #A8D5BA; /* Ljusare grön på hover */
+    color: #A8D5BA; 
 }
 
 /* Navbar-toggler */

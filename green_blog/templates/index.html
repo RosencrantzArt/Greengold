@@ -31,15 +31,12 @@
                     <h5 class="card-title"><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h5>
                     <p class="card-text">{{ post.excerpt|truncatewords:20 }}</p>
                     <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
-                    
-                    {% if user.is_authenticated %}
-                    <button class="btn-like mt-2">Like</button>
-                    <button class="btn-comment mt-2">Comment</button>
-                    {% else %}
-                    <p class="mt-2 text-muted">You must be logged in to like or comment on posts.</p>
+                
+                    {% if not user.is_authenticated %}
+                    <p class="mt-2 text-muted">You must be logged in to comment on posts.</p>
                     {% endif %}
-                    
                 </div>
+                
             </div>
         </div>
         {% if forloop.counter|divisibleby:3 %}
