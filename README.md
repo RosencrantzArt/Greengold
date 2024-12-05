@@ -239,6 +239,55 @@ The font used throughout the project is:
 The design focuses on a harmonious balance of colors and typography to create an inspiring and user-friendly environment. The green-dominant palette reflects nature and aligns with the blog's focus on sustainability and exploration of Sweden's natural landscapes.  
 Interactive elements are highlighted with accent colors, while the 'Lato' font ensures readability and complements the modern aesthetic of the blog.
 
+## CRUD Functionality
+
+The project fully implements CRUD (Create, Read, Update, Delete) functionality for posts and comments. Below is an overview of how each operation is handled:
+
+### 1. Create
+- **Description:** Admin can create new posts and comments through an intuitive user interface.
+- **How it works:**
+  - Posts: Admin can add text and images to create a new post. 
+  - Comments: Users can comment on any post to interact with the community.
+
+- **Front-End Behavior:** 
+  - New posts and comments are displayed immediately on the page after submission.
+
+### 2. Read
+- **Description:** Posts and comments are displayed dynamically on the homepage or in detail views.
+- **How it works:**
+  - All posts are shown on the homepage
+  - Individual posts can be viewed in detail, along with their comments.
+
+- **Front-End Behavior:** 
+  - Data is fetched from the database and displayed in a user-friendly format with a modern, green-themed design.
+
+### 3. Update
+- **Description:** Users can edit their own comments.
+
+- **How it works:**
+  - Comments: Users can edit the content of their comments.
+
+- **Front-End Behavior:** 
+  - Updated data is reflected immediately on the page without requiring a full page reload.
+
+### 4. Delete
+- **Description:** Users can delete their own comments.
+
+- **How it works:**
+  
+  - Comments: Users can delete their comments from the post's detail view.
+  
+- **Front-End Behavior:** 
+  - Deleted items are removed from the interface dynamically.
+
+### Verification of CRUD
+To ensure CRUD functionality is working:
+1. Create a post/comment and verify it appears immediately.
+2. View the created post/comment in the list and detailed views.
+3. Edit the post/comment and confirm the updates are reflected in the front-end.
+4. Delete the post/comment and confirm it disappears from the front-end and database.
+
+This functionality is implemented using Django for the back-end and enhanced with JavaScript for dynamic front-end updates.
 
 
 ## License
