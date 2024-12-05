@@ -16,6 +16,8 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
+ 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -53,7 +55,14 @@ INSTALLED_APPS = [
     'crispy_forms',         
     'crispy_bootstrap5',   
 ]
-    
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('dlt0ybmve'),
+    'API_KEY': os.environ.get('249275916852425'),
+    'API_SECRET': os.environ.get('2t-8MAHuHxTg0snJWv6JE4U8ljI'),
+}
 
 
 LOGOUT_REDIRECT_URL = '/'
