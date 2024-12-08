@@ -84,24 +84,13 @@ def delete_comment(request, post_slug, comment_id):
     # Redirect back to the post detail page
     return redirect('post_detail', slug=post_slug)
 
-# Function to like a post
-@login_required
-def like_post(request, post_slug):
-    post = get_object_or_404(Post, slug=post_slug)
-
-    if request.user not in post.likes.all():
-        post.likes.add(request.user)
-    else:
-        post.likes.remove(request.user)
-
-    return JsonResponse({'likes': post.total_likes()})
 
 # List all posts
 class PostList(ListView):
     model = Post
     template_name = 'index.html'
     context_object_name = 'post_list'
-    paginate_by = 5
+    paginate_by = 3
 
     def get_queryset(self):
         return Post.objects.filter(status=1).order_by('-created_at')
