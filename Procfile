@@ -1,1 +1,1 @@
-web: gunicorn green_blog.wsgi
+web: gunicorn nature.wsgi
